@@ -19,7 +19,7 @@ class Solution {
         boolean[] freq = new boolean[n];
         helper(ans, ds, freq, arr);
 
-       Collections.sort(ans, new ListComparator());
+       //Collections.sort(ans, new ListComparator());
         StringBuilder sb = new StringBuilder();
 
         List<Integer> temp  = ans.get(k-1);
