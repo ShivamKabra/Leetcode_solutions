@@ -1,10 +1,4 @@
-class ListComparator implements Comparator<List<Integer>> {
-    @Override
-    public int compare(List<Integer> list1, List<Integer> list2) {
-        // Compare the first element of each list
-        return list1.get(0).compareTo(list2.get(0));
-    }
-}
+
 
 class Solution {
     public String getPermutation(int n, int k) {
