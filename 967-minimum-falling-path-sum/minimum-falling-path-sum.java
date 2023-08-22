@@ -8,20 +8,15 @@ class Solution {
         }
 
         for(int i=1;i<m;i++){
-            
+            int ld = Integer.MAX_VALUE;
+            int rd = Integer.MAX_VALUE;
             for(int j=0;j<m;j++){
                 int up = matrix[i][j] + dp[i-1][j];
-                int ld = matrix[i][j];
                 if(j>0){
-                    ld+= dp[i-1][j-1];
-                }else{
-                    ld = Integer.MAX_VALUE;
+                    ld = matrix[i][j] + dp[i-1][j-1];
                 }
-                int rd = matrix[i][j];
                 if(j<m-1){
-                    rd+= dp[i-1][j+1];
-                }else{
-                    rd = Integer.MAX_VALUE;
+                    rd = matrix[i][j] + dp[i-1][j+1];
                 }
                 dp[i][j] = Math.min(up, Math.min(ld, rd));
             }
