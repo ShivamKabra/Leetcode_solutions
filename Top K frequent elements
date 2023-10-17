@@ -1,0 +1,40 @@
+import java.util.Comparator;
+
+class Pair {
+    int first;
+    int second;
+
+    public Pair(int first, int second) {
+        this.first = first;
+        this.second = second;
+    }
+}
+
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            if(map.containsKey(nums[i])){
+                int count = map.get(nums[i]);
+                count++;
+                map.put(nums[i], count);
+            }else{
+                map.put(nums[i], 1);
+            }
+        }
+        Comparator<Pair> comparator = (pair1, pair2) -> Integer.compare(pair2.second, pair1.second);
+
+        PriorityQueue<Pair> pq = new PriorityQueue<>(comparator);
+        for(Integer key : map.keySet()){
+            pq.add(new Pair(key, map.get(key)));
+        }
+
+        int[] ans = new int[k];
+        for(int i=0;i<k;i++){
+            ans[i] = pq.poll().first;
+        }
+
+        return ans;
+
+    }
+}
